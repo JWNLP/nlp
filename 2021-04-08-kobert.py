@@ -115,9 +115,11 @@ tok = nlp.data.BERTSPTokenizer(tokenizer, vocab, lower=False)
 
 #에러 
  '''
+ 138번 에러
  class BERTDataset(Dataset): 에러      
-        # self.labels = [np.int32(i[label_idx]) for i in dataset] 로 하니까 
+        #[에러1:138번] self.labels = [np.int32(i[label_idx]) for i in dataset] 로 하니까 
         
+        158번에서 
         data_train = BERTDataset(td_hate, 0, 1, tok, max_len, True, False) 에러1발생
         # 에러1:  ValueError: invalid literal for int() with base 10: 'o'
 
@@ -214,8 +216,10 @@ def calc_accuracy(X,Y):
     train_acc = (max_indices == Y).sum().data.cpu().numpy()/max_indices.size()[0]
     return train_acc
 
-# 에러2 :   #AttributeError: 'tuple' object has no attribute 'long'
+#[235번 에러] 
+#에러2 :   #AttributeError: 'tuple' object has no attribute 'long'
 #        label = label.long().to(device)
+
 
 # 모델 학습 시작
 for e in range(num_epochs):
